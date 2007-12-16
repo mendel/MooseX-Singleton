@@ -9,6 +9,13 @@ sub get_singleton_instance {
     my ($self, $instance) = @_;
 
     return $instance if blessed $instance;
+
+    # optimization: it's really slow to go through new_object for every access
+    # so return the singleton if we see it already exists, which it will every
+    # single except the first.
+    no strict 'refs';
+    return ${"$instance\::singleton"} if defined ${"$instance\::singleton"};
+
     return $instance->instance;
 }
 
