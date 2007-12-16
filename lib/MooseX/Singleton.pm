@@ -1,24 +1,19 @@
 package MooseX::Singleton;
-use Moose::Role;
+use Moose;
+use MooseX::Singleton::Object;
+use MooseX::Singleton::Meta::Class;
 
 our $VERSION = 0.02;
 
-override new => sub {
-    my ($class) = @_;
+sub import {
+    my $caller = caller;
 
-    no strict 'refs';
+    Moose::init_meta($caller, 'MooseX::Singleton::Object', 'MooseX::Singleton::Meta::Class');
 
-    # create our instance if we don't already have one
-    if (!defined ${"$class\::singleton"}) {
-        ${"$class\::singleton"} = super;
-    }
+    Moose->import({into => $caller});
+    strict->import;
+    warnings->import;
 
-    return ${"$class\::singleton"};
-};
-
-# instance really is the same as new. any ideas for a better implementation?
-sub instance {
-    shift->new(@_);
 }
 
 1;
