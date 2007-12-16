@@ -1,27 +1,24 @@
 package MooseX::Singleton;
-
 use Moose::Role;
 
-our $VERSION = 0.01;
+our $VERSION = 0.02;
 
 override new => sub {
-  my ($class) = @_;
+    my ($class) = @_;
 
-  no strict qw/refs/;
+    no strict 'refs';
 
-  my $instance = super;
+    # create our instance if we don't already have one
+    if (!defined ${"$class\::singleton"}) {
+        ${"$class\::singleton"} = super;
+    }
 
-  ${"$class\::singleton"} = $instance;
-
-  return $instance;
+    return ${"$class\::singleton"};
 };
 
+# instance really is the same as new. any ideas for a better implementation?
 sub instance {
-  my ($class) = @_;
-
-  no strict qw/refs/;
-
-  return ${"$class\::singleton"};
+    shift->new(@_);
 }
 
 1;
