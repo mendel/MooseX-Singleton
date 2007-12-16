@@ -16,7 +16,7 @@ sub get_singleton_instance {
     no strict 'refs';
     return ${"$instance\::singleton"} if defined ${"$instance\::singleton"};
 
-    return $instance->instance;
+    return $instance->meta->construct_instance;
 }
 
 sub clone_instance {
