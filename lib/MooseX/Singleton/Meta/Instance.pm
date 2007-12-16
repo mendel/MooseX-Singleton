@@ -56,3 +56,19 @@ sub inline_slot_access {
 
 1;
 
+__END__
+
+=pod
+
+=head1 NAME
+
+MooseX::Singleton::Meta::Instance
+
+=head1 DESCRIPTION
+
+This instance metaclass manages attribute access and storage. When accessing an
+attribute, it will convert a bare package to its cached singleton instance
+(creating it if necessary).
+
+=cut
+

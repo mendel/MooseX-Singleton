@@ -5,9 +5,21 @@ use metaclass 'MooseX::Singleton::Meta::Class';
 
 extends 'Moose::Object';
 
-no strict 'refs';
-
 sub instance { shift->new }
 
 1;
+
+__END__
+
+=pod
+
+=head1 NAME
+
+MooseX::Singleton::Object - base class for MooseX::Singleton
+
+=head1 DESCRIPTION
+
+This just adds C<instance> as a shortcut for C<new>.
+
+=cut
 

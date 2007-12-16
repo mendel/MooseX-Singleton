@@ -32,3 +32,19 @@ override construct_instance => sub {
 
 1;
 
+__END__
+
+=pod
+
+=head1 NAME
+
+MooseX::Singleton::Meta::Class
+
+=head1 DESCRIPTION
+
+This metaclass is where the forcing of one instance occurs. The first call to
+C<construct_instance> is run normally (and then cached). Subsequent calls will
+return the cached version.
+
+=cut
+
