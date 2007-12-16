@@ -16,5 +16,19 @@ sub initialize {
     );
 };
 
+override construct_instance => sub {
+    my ($class) = @_;
+    my $pkg = $class->name;
+
+    no strict 'refs';
+
+    # create exactly one instance
+    if (!defined ${"$pkg\::singleton"}) {
+        ${"$pkg\::singleton"} = super;
+    }
+
+    return ${"$pkg\::singleton"};
+};
+
 1;
 
