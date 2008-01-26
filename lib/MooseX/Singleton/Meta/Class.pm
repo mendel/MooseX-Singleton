@@ -16,18 +16,30 @@ sub initialize {
     );
 };
 
-override construct_instance => sub {
+sub existing_singleton {
     my ($class) = @_;
     my $pkg = $class->name;
 
     no strict 'refs';
 
     # create exactly one instance
-    if (!defined ${"$pkg\::singleton"}) {
-        ${"$pkg\::singleton"} = super;
+    if (defined ${"$pkg\::singleton"}) {
+        return ${"$pkg\::singleton"};
     }
 
-    return ${"$pkg\::singleton"};
+    return;
+}
+
+override construct_instance => sub {
+    my ($class) = @_;
+
+    # create exactly one instance
+    my $existing = $class->existing_singleton;
+    return $existing if $existing;
+
+    my $pkg = $class->name;
+    no strict 'refs';
+    return ${"$pkg\::singleton"} = super;
 };
 
 1;

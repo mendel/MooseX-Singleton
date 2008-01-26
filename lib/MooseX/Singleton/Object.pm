@@ -7,6 +7,15 @@ extends 'Moose::Object';
 
 sub instance { shift->new }
 
+sub new {
+  my ($class, @args) = @_;
+
+  my $existing = $class->meta->existing_singleton;
+  confess "Singleton is already initialized" if $existing and @args;
+
+  return $class->SUPER::new(@args);
+}
+
 1;
 
 __END__
