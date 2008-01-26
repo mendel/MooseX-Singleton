@@ -1,6 +1,6 @@
 use strict;
 use warnings;
-use Test::More tests => 8;
+use Test::More tests => 9;
 
 my $i = 0;
 sub new_singleton_pkg {
@@ -42,11 +42,14 @@ for my $pkg (new_singleton_pkg) {
   );
 
   eval { $pkg->new(number => 3) };
-  ok($@, "can't make new singleton with conflicting attributes");
+  like($@, qr/already/, "can't make new singleton with conflicting attributes");
 
   my $second = eval { $pkg->new };
   ok(!$@, "...but a second ->new without args is okay");
 
   is($second->number, 5, "...we get the originally inited number from it");
+
+  eval { $pkg->initialize };
+  like($@, qr/already/, "...but ->initialize() is still an error");
 }
 
