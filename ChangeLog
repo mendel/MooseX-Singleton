@@ -1,5 +1,8 @@
 Revision history for Perl extension MooseX-Singleton
 
+0.04 2008-01-27
+		- exception when ->new called with args and instance already init'd (rjbs)
+
 0.03 2007-12-16
     - reimplementation as a metaclass (Sartak)
 	- initial CPAN release
