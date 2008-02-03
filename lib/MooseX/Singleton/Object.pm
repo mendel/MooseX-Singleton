@@ -22,6 +22,10 @@ sub new {
   my $existing = $class->meta->existing_singleton;
   confess "Singleton is already initialized" if $existing and @args;
 
+  # Otherwise BUILD will be called repeatedly on the existing instance.
+  # -- rjbs, 2008-02-03
+  return $existing if $existing and ! @args;
+
   return $class->SUPER::new(@args);
 }
 
