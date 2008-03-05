@@ -3,7 +3,7 @@ use Moose;
 use MooseX::Singleton::Object;
 use MooseX::Singleton::Meta::Class;
 
-our $VERSION = 0.05;
+our $VERSION = 0.06;
 
 sub import {
     my $caller = caller;
@@ -29,7 +29,7 @@ MooseX::Singleton - turn your Moose class into a singleton
 
 =head1 VERSION
 
-Version 0.04, released 03 Feb 08
+Version 0.06, released 05 Mar 08
 
 =head1 SYNOPSIS
 
@@ -96,9 +96,11 @@ Anders Nor Berle E<lt>debolaz@gmail.comE<gt>
 
 Ricardo SIGNES E<lt>rjbs@cpan.orgE<gt>
 
+Dave Rolsky E<lt>autarch@urth.orgE<gt>
+
 =head1 COPYRIGHT AND LICENSE
 
-Copyright 2007 Shawn M Moore.
+Copyright 2007, 2008 Shawn M Moore.
 
 This program is free software; you can redistribute it and/or modify it under
 the same terms as Perl itself.

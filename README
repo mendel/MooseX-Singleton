@@ -2,7 +2,7 @@ NAME
     MooseX::Singleton - turn your Moose class into a singleton
 
 VERSION
-    Version 0.03, released 16 Dec 07
+    Version 0.06, released 05 Mar 08
 
 SYNOPSIS
         package MyApp;
@@ -56,6 +56,11 @@ AUTHOR
 
 SOME CODE STOLEN FROM
     Anders Nor Berle <debolaz@gmail.com>
+
+AND PATCHES FROM
+    Ricardo SIGNES <rjbs@cpan.org>
+
+    Dave Rolsky <autarch@urth.org>
 
 COPYRIGHT AND LICENSE
     Copyright 2007 Shawn M Moore.
