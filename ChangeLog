@@ -1,5 +1,9 @@
 Revision history for Perl extension MooseX-Singleton
 
+0.06
+
+		- singleton objects were broken when made_immutable (Dave Rolsky)
+
 0.05 2008-02-03
 		- avoid re-BUILD-ing existing singleton objects
 

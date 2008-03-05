@@ -29,6 +29,8 @@ sub new {
   return $class->SUPER::new(@args);
 }
 
+no Moose;
+
 1;
 
 __END__

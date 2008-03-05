@@ -15,6 +15,8 @@ sub import {
     warnings->import;
 }
 
+no Moose;
+
 1;
 
 __END__

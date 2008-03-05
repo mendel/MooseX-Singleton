@@ -1,6 +1,16 @@
 use strict;
 use warnings;
-use Test::More tests => 16;
+
+use Test::More;
+
+BEGIN {
+    unless ( eval 'use Test::Warn; 1' )  {
+        plan skip_all => 'These tests require Test::Warn';
+    }
+    else {
+        plan tests => 17;
+    }
+}
 
 BEGIN {
     package MooseX::Singleton::Test;
@@ -29,6 +39,9 @@ BEGIN {
 
         $self->bag->{$key} += $value;
     }
+
+    ::warning_is sub { make_immutable }, '',
+        'no warnings when calling make_immutable';
 }
 
 my $mst = MooseX::Singleton::Test->instance;

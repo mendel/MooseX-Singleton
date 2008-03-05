@@ -54,6 +54,8 @@ sub inline_slot_access {
     sprintf "%s->meta->instance_metaclass->get_singleton_instance(%s)->{%s}", $instance, $instance, $slot_name;
 }
 
+no Moose;
+
 1;
 
 __END__

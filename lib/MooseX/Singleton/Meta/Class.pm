@@ -42,6 +42,20 @@ override construct_instance => sub {
     return ${"$pkg\::singleton"} = super;
 };
 
+# Need to remove make_immutable before we define it below
+no Moose;
+
+use MooseX::Singleton::Meta::Method::Constructor;
+
+sub make_immutable {
+    my $self = shift;
+    $self->SUPER::make_immutable
+      (
+       constructor_class => 'MooseX::Singleton::Meta::Method::Constructor',
+       @_,
+      );
+}
+
 1;
 
 __END__
