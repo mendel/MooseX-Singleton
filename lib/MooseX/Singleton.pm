@@ -3,7 +3,7 @@ use Moose;
 use MooseX::Singleton::Object;
 use MooseX::Singleton::Meta::Class;
 
-our $VERSION = 0.06;
+our $VERSION = 0.07;
 
 sub import {
     my $caller = caller;
@@ -29,7 +29,7 @@ MooseX::Singleton - turn your Moose class into a singleton
 
 =head1 VERSION
 
-Version 0.06, released 05 Mar 08
+Version 0.07, released 07 Mar 08
 
 =head1 SYNOPSIS
 
