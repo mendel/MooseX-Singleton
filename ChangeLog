@@ -1,5 +1,8 @@
 Revision history for Perl extension MooseX-Singleton
 
+0.08
+	- fix make_immutable keyword in test (Sartak)
+
 0.07 2008-03-07
 	- bump Moose dep to 0.37 because that's when we got make_immutable (Sartak)
 
