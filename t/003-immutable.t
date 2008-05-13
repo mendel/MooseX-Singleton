@@ -40,7 +40,7 @@ BEGIN {
         $self->bag->{$key} += $value;
     }
 
-    ::warning_is sub { make_immutable }, '',
+    ::warning_is sub { __PACKAGE__->meta->make_immutable }, '',
         'no warnings when calling make_immutable';
 }
 
