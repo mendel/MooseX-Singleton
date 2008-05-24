@@ -1,12 +1,12 @@
 Revision history for Perl extension MooseX-Singleton
 
 0.08 2008-05-24
-	- fix make_immutable keyword in test (Sartak)
-	- immutable singleton objects did not call triggers in the constructor (Dave Rolsky)
-	- fix immutability to actually work with modern Moose 0.41+ (Dave Rolsky)
+    - fix make_immutable keyword in test (Sartak)
+    - immutable singleton objects did not call triggers in the constructor (Dave Rolsky)
+    - fix immutability to actually work with modern Moose 0.41+ (Dave Rolsky)
 
 0.07 2008-03-07
-	- bump Moose dep to 0.37 because that's when we got make_immutable (Sartak)
+    - bump Moose dep to 0.37 because that's when we got make_immutable (Sartak)
 
 0.06 2008-03-05
     - singleton objects were broken when made_immutable (Dave Rolsky)
@@ -20,7 +20,7 @@ Revision history for Perl extension MooseX-Singleton
 
 0.03 2007-12-16
     - reimplementation as a metaclass (Sartak)
-	- initial CPAN release
+    - initial CPAN release
 
 0.02 2007-12-16
     - instance and new are really the same, cleanup (Sartak)
