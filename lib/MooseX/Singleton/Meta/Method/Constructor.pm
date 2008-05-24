@@ -30,6 +30,7 @@ sub intialize_body {
         $self->_generate_slot_initializer($_)
     } 0 .. (@{$self->attributes} - 1));
 
+    $source .= ";\n" . $self->_generate_triggers();
     $source .= ";\n" . $self->_generate_BUILDALL();
 
     $source .= ";\n" . 'return ${$existing} = $instance';
