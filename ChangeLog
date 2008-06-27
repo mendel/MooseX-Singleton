@@ -1,5 +1,8 @@
 Revision history for Perl extension MooseX-Singleton
 
+0.09 2008-06-27
+    - fix immutability to work with Moose 0.51 (Dave Rolsky)
+
 0.08 2008-05-24
     - fix make_immutable keyword in test (Sartak)
     - immutable singleton objects did not call triggers in the constructor (Dave Rolsky)

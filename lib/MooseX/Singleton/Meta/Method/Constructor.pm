@@ -22,9 +22,9 @@ sub initialize_body {
     $source .= "\n" . 'return $class->Moose::Object::new(@_)';
     $source .= "\n" . '    if $class ne \'' . $self->associated_metaclass->name . '\';';
 
-    $source .= "\n" . 'my %params = (scalar @_ == 1) ? %{$_[0]} : @_;';
+    $source .= "\n" . 'my $params = ' . $self->_generate_BUILDARGS('$class', '@_');
 
-    $source .= "\n" . 'my $instance = ' . $self->meta_instance->inline_create_instance('$class');
+    $source .= ";\n" . 'my $instance = ' . $self->meta_instance->inline_create_instance('$class');
 
     $source .= ";\n" . (join ";\n" => map {
         $self->_generate_slot_initializer($_)
