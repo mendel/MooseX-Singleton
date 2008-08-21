@@ -1,21 +1,23 @@
 package MooseX::Singleton;
-use Moose;
+
+use Moose ();
+use Moose::Exporter;
 use MooseX::Singleton::Object;
 use MooseX::Singleton::Meta::Class;
 
-our $VERSION = 0.09;
+our $VERSION = '0.09_01';
+$VERSION = eval $VERSION;
 
-sub import {
-    my $caller = caller;
+Moose::Exporter->setup_import_methods( also => 'Moose' );
 
-    Moose::init_meta($caller, 'MooseX::Singleton::Object', 'MooseX::Singleton::Meta::Class');
-
-    Moose->import({into => $caller});
-    strict->import;
-    warnings->import;
+sub init_meta {
+    shift;
+    Moose->init_meta(
+        @_,
+        base_class => 'MooseX::Singleton::Object',
+        metaclass  => 'MooseX::Singleton::Meta::Class',
+    );
 }
-
-no Moose;
 
 1;
 

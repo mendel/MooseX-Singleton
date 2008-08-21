@@ -64,7 +64,7 @@ sub initialize_body {
         $code = eval $source;
         confess "Could not eval the constructor :\n\n$source\n\nbecause :\n\n$@" if $@;
     }
-    $self->{'&!body'} = $code;
+    $self->{'body'} = $code;
 }
 
 no Moose;
