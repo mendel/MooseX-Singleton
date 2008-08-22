@@ -5,7 +5,7 @@ use Moose::Exporter;
 use MooseX::Singleton::Object;
 use MooseX::Singleton::Meta::Class;
 
-our $VERSION = '0.09_01';
+our $VERSION = '0.09_02';
 $VERSION = eval $VERSION;
 
 Moose::Exporter->setup_import_methods( also => 'Moose' );

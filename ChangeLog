@@ -1,5 +1,8 @@
 Revision history for Perl extension MooseX-Singleton
 
+0.09_02 2008-08-22
+    - bumped the Moose dependency to 0.55_01 (Dave Rolsky)
+
 0.09_01 2008-08-21
     - fixes to work with the latest dev release of Moose - 0.55_01 (Dave Rolsky)
 
