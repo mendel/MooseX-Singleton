@@ -4,4 +4,4 @@ steps = FindVersion, ChangeVersion, CheckChangeLog, DistTest, Commit, Tag, MakeD
 svn.tagpattern = %v
 svn.tagpattern = http://code2.0beta.co.uk/moose/svn/MooseX-Singleton/tags/%v
 
-CheckChangeLog.files = Changes
+CheckChangeLog.files = ChangeLog
