@@ -64,7 +64,10 @@ sub initialize_body {
         } @type_constraints;
 
         $code = eval $source;
-        confess "Could not eval the constructor :\n\n$source\n\nbecause :\n\n$@" if $@;
+        $self->throw_error(
+            "Could not eval the constructor :\n\n$source\n\nbecause :\n\n$@",
+            error => $@, data => $source )
+            if $@;
     }
     $self->{'body'} = $code;
 }
