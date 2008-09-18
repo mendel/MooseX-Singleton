@@ -1,5 +1,8 @@
 Revision history for Perl extension MooseX-Singleton
 
+0.12
+    - Fixed to work with Moose 0.58
+	
 0.11 2008-09-05
     - Fixed to work with Moose 0.57. Fixes RT #39013. Reported by Jon Swartz (Dave Rolsky)
 	
