@@ -72,6 +72,10 @@ sub initialize_body {
     $self->{'body'} = $code;
 }
 
+sub _expected_constructor_class {
+    return 'MooseX::Singleton::Object';
+}
+
 no Moose;
 
 1;
