@@ -15,8 +15,8 @@ sub initialize_body {
     # the author, after all, nothing is free)
     my $source = 'sub {';
     $source .= "\n" . 'my $class = shift;';
-
-    $source .= "\n" . 'my $existing = do { no strict "refs"; \${"$class\::singleton"}; };';
+ 
+    $source .= "\n" . 'my $existing = do { no strict "refs"; no warnings "once"; \${"$class\::singleton"}; };';
     $source .= "\n" . 'return ${$existing} if ${$existing};';
 
     $source .= "\n" . 'return $class->Moose::Object::new(@_)';
