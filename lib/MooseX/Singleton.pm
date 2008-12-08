@@ -86,9 +86,11 @@ All complex software has bugs lurking in it, and this module is no
 exception. If you find a bug please either email me, or add the bug
 to cpan-RT.
 
-=head1 AUTHOR
+=head1 AUTHORS
 
 Shawn M Moore E<lt>sartak@gmail.comE<gt>
+
+Dave Rolsky E<lt>autarch@urth.orgE<gt>
 
 =head1 SOME CODE STOLEN FROM
 
@@ -97,8 +99,6 @@ Anders Nor Berle E<lt>debolaz@gmail.comE<gt>
 =head1 AND PATCHES FROM
 
 Ricardo SIGNES E<lt>rjbs@cpan.orgE<gt>
-
-Dave Rolsky E<lt>autarch@urth.orgE<gt>
 
 =head1 COPYRIGHT AND LICENSE
 
