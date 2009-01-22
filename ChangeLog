@@ -1,5 +1,9 @@
 Revision history for Perl extension MooseX-Singleton
 
+0.14 2009-01-22
+    - Converted to use new method generation helpers in the most
+      recent Moose (0.65) and Class::MOP (Dave Rolsky)
+	
 0.13 2008-12-08
     - Fixed to work with Moose 0.63
 
