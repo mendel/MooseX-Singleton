@@ -1,5 +1,11 @@
 Revision history for Perl extension MooseX-Singleton
 
+0.15
+    - When an object was implicitly constructed by calling
+      ClassName->attribute, it skipped the BUILD and BUILDARGS defined
+      for a class. Report and test from Josh in RT #42690. (Dave
+      Rolsky)
+
 0.14 2009-01-22
     - Converted to use new method generation helpers in the most
       recent Moose (0.65) and Class::MOP (Dave Rolsky)

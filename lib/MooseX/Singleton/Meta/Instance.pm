@@ -16,7 +16,9 @@ sub get_singleton_instance {
     no strict 'refs';
     return ${"$instance\::singleton"} if defined ${"$instance\::singleton"};
 
-    return $instance->meta->construct_instance;
+    # We need to go through ->new in order to make sure BUILD and
+    # BUILDARGS get called.
+    return $instance->meta->name->new;
 }
 
 sub clone_instance {
