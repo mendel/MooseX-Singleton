@@ -2,6 +2,7 @@
 package MooseX::Singleton::Meta::Class;
 use Moose;
 use MooseX::Singleton::Meta::Instance;
+use MooseX::Singleton::Meta::Method::Constructor;
 
 extends 'Moose::Meta::Class';
 
@@ -9,12 +10,15 @@ sub initialize {
     my $class = shift;
     my $pkg   = shift;
 
-    $class->SUPER::initialize(
+    my $self = $class->SUPER::initialize(
         $pkg,
         instance_metaclass => 'MooseX::Singleton::Meta::Instance',
+        constructor_class  => 'MooseX::Singleton::Meta::Method::Constructor',
         @_,
     );
-};
+
+    return $self;
+}
 
 sub existing_singleton {
     my ($class) = @_;
@@ -30,7 +34,7 @@ sub existing_singleton {
     return;
 }
 
-override construct_instance => sub {
+override _construct_instance => sub {
     my ($class) = @_;
 
     # create exactly one instance
@@ -42,19 +46,7 @@ override construct_instance => sub {
     return ${"$pkg\::singleton"} = super;
 };
 
-# Need to remove make_immutable before we define it below
 no Moose;
-
-use MooseX::Singleton::Meta::Method::Constructor;
-
-sub make_immutable {
-    my $self = shift;
-    $self->SUPER::make_immutable
-      (
-       constructor_class => 'MooseX::Singleton::Meta::Method::Constructor',
-       @_,
-      );
-}
 
 1;
 
