@@ -40,3 +40,5 @@
 
 # No need to ship this
 \.shipit
+
+\.git
