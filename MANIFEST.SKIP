@@ -4,6 +4,7 @@
 ,v$
 \.svn.*
 ^\.hg
+^\.git
 
 # Avoid Makemaker generated and utility files.
 ^Makefile$
@@ -40,5 +41,3 @@
 
 # No need to ship this
 \.shipit
-
-\.git
