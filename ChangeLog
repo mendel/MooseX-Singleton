@@ -1,6 +1,6 @@
 Revision history for Perl extension MooseX-Singleton
 
-0.17
+0.17 2009-04-24
 		- Add ClassName->_clear_instance. (hdp)
 
 0.16 2009-04-24
