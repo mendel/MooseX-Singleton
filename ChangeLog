@@ -1,5 +1,8 @@
 Revision history for Perl extension MooseX-Singleton
 
+0.17
+		- Add ClassName->_clear_instance. (hdp)
+
 0.16 2009-04-24
     - Changes to keep constructor inlining working with latest Moose &
       Class::MOP. This module will still work with any Moose from 0.74

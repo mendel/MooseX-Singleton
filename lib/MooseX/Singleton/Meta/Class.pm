@@ -34,6 +34,13 @@ sub existing_singleton {
     return;
 }
 
+sub clear_singleton {
+    my ($class) = @_;
+    my $pkg = $class->name;
+    no strict 'refs';
+    undef ${"$pkg\::singleton"};
+}
+
 override _construct_instance => sub {
     my ($class) = @_;
 

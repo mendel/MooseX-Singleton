@@ -60,10 +60,14 @@ All you should need to do to transform your class is to change C<use Moose> to
 C<use MooseX::Singleton>. This module uses a new class metaclass and instance
 metaclass, so if you're doing metamagic you may not be able to use this.
 
-C<MooseX::Singleton> gives your class an C<instance> method that can be used to get a handle on the singleton. It's actually just an alias for C<new>.
+C<MooseX::Singleton> gives your class an C<instance> method that can be used to
+get a handle on the singleton. It's actually just an alias for C<new>.
 
 Alternatively, C<< YourPackage->method >> should just work. This includes
 accessors.
+
+If you need to reset your class's singleton object for some reason (e.g.
+tests), you can call C<< YourPackage->_clear_instance >>.
 
 =head1 TODO
 

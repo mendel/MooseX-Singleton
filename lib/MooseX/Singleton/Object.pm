@@ -28,6 +28,11 @@ sub new {
   return $class->SUPER::new(@args);
 }
 
+sub _clear_instance {
+  my ($class) = @_;
+  $class->meta->clear_singleton;
+}
+
 no Moose;
 
 1;
