@@ -56,6 +56,12 @@ sub _initialize_body {
     $self->{'body'} = $code;
 }
 
+# For CMOP 0.82_01+
+sub _expected_method_class {
+    return 'MooseX::Singleton::Object';
+}
+
+# For older versions of Moose/CMOP
 sub _expected_constructor_class {
     return 'MooseX::Singleton::Object';
 }
