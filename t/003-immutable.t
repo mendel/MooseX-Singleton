@@ -12,7 +12,7 @@ BEGIN {
     }
 }
 
-BEGIN {
+{
     package MooseX::Singleton::Test;
     use MooseX::Singleton;
 
