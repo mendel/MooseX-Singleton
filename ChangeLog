@@ -1,5 +1,8 @@
 Revision history for Perl extension MooseX-Singleton
 
+0.19 2009-07-09
+    - Remove ambiguity about copyright holder (Sartak)
+
 0.18 2009-06-21
     - Changes to work Moose 0.82 (Dave Rolsky)	
 	
