@@ -47,10 +47,6 @@ __END__
 
 MooseX::Singleton - turn your Moose class into a singleton
 
-=head1 VERSION
-
-Version 0.18, released 24 May 08
-
 =head1 SYNOPSIS
 
     package MyApp;
