@@ -1,8 +1,6 @@
 #!/usr/bin/env perl
-package MooseX::Singleton::Object;
-use Moose;
-
-extends 'Moose::Object';
+package MooseX::Singleton::Role::Object;
+use Moose::Role;
 
 sub instance { shift->new }
 
@@ -15,7 +13,7 @@ sub initialize {
   return $class->SUPER::new(@args);
 }
 
-sub new {
+override new => sub {
   my ($class, @args) = @_;
 
   my $existing = $class->meta->existing_singleton;
@@ -25,8 +23,8 @@ sub new {
   # -- rjbs, 2008-02-03
   return $existing if $existing and ! @args;
 
-  return $class->SUPER::new(@args);
-}
+  return super();
+};
 
 sub _clear_instance {
   my ($class) = @_;
@@ -43,7 +41,7 @@ __END__
 
 =head1 NAME
 
-MooseX::Singleton::Object - base class for MooseX::Singleton
+MooseX::Singleton::Object - Object class role for MooseX::Singleton
 
 =head1 DESCRIPTION
 

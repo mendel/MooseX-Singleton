@@ -1,24 +1,8 @@
 #!/usr/bin/env perl
-package MooseX::Singleton::Meta::Class;
-use Moose;
+package MooseX::Singleton::Role::Meta::Class;
+use Moose::Role;
 use MooseX::Singleton::Meta::Instance;
 use MooseX::Singleton::Meta::Method::Constructor;
-
-extends 'Moose::Meta::Class';
-
-sub initialize {
-    my $class = shift;
-    my $pkg   = shift;
-
-    my $self = $class->SUPER::initialize(
-        $pkg,
-        instance_metaclass => 'MooseX::Singleton::Meta::Instance',
-        constructor_class  => 'MooseX::Singleton::Meta::Method::Constructor',
-        @_,
-    );
-
-    return $self;
-}
 
 sub existing_singleton {
     my ($class) = @_;
@@ -63,13 +47,13 @@ __END__
 
 =head1 NAME
 
-MooseX::Singleton::Meta::Class
+MooseX::Singleton::Role::Meta::Class - Metaclass role for MooseX::Singleton
 
 =head1 DESCRIPTION
 
-This metaclass is where the forcing of one instance occurs. The first call to
-C<construct_instance> is run normally (and then cached). Subsequent calls will
-return the cached version.
+This metaclass role makes sure that there is only ever one instance of an
+object for a singleton class. The first call to C<construct_instance> is run
+normally (and then cached). Subsequent calls will return the cached version.
 
 =cut
 

@@ -1,10 +1,8 @@
 #!/usr/bin/env perl
-package MooseX::Singleton::Meta::Method::Constructor;
-use Moose;
+package MooseX::Singleton::Role::Meta::Method::Constructor;
+use Moose::Role;
 
-extends 'Moose::Meta::Method::Constructor';
-
-sub _initialize_body {
+override _initialize_body => sub {
     my $self = shift;
     # TODO:
     # the %options should also include a both
@@ -15,7 +13,7 @@ sub _initialize_body {
     # the author, after all, nothing is free)
     my $source = 'sub {';
     $source .= "\n" . 'my $class = shift;';
- 
+
     $source .= "\n" . 'my $existing = do { no strict "refs"; no warnings "once"; \${"$class\::singleton"}; };';
     $source .= "\n" . 'return ${$existing} if ${$existing};';
 
@@ -57,17 +55,30 @@ sub _initialize_body {
         if $e;
 
     $self->{'body'} = $code;
-}
+};
 
-# For CMOP 0.82_01+
-sub _expected_method_class {
-    return 'MooseX::Singleton::Object';
-}
+# Ideally we'd be setting this in the constructor, but the new() methods in
+# what the parent classes are not well-factored.
+#
+# This is all a nasty hack, though. We need to fix Class::MOP::Inlined to
+# allow constructor class roles to say "if the parent class has role X,
+# inline".
+override _expected_method_class => sub {
+    my $self = shift;
 
-# For older versions of Moose/CMOP
-sub _expected_constructor_class {
-    return 'MooseX::Singleton::Object';
-}
+    my $super_value = super();
+    if ( $super_value eq 'Moose::Object' ) {
+        for my $parent ( map { Class::MOP::class_of($_) }
+            $self->associated_metaclass->superclasses ) {
+            return $parent->name
+                if $parent->is_anon_class
+                    && grep { $_->name eq 'Moose::Object' }
+                    map { Class::MOP::class_of($_) } $parent->superclasses;
+        }
+    }
+
+    return $super_value;
+};
 
 no Moose;
 
