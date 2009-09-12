@@ -1,8 +1,8 @@
 #!/usr/bin/env perl
 package MooseX::Singleton::Role::Meta::Class;
 use Moose::Role;
-use MooseX::Singleton::Meta::Instance;
-use MooseX::Singleton::Meta::Method::Constructor;
+use MooseX::Singleton::Role::Meta::Instance;
+use MooseX::Singleton::Role::Meta::Method::Constructor;
 
 sub existing_singleton {
     my ($class) = @_;
