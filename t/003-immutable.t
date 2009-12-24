@@ -1,6 +1,7 @@
 use strict;
 use warnings;
 
+use Scalar::Util qw( refaddr );
 use Test::More;
 
 BEGIN {
@@ -8,7 +9,7 @@ BEGIN {
         plan skip_all => 'These tests require Test::Warn';
     }
     else {
-        plan tests => 17;
+        plan tests => 18;
     }
 }
 
@@ -79,4 +80,15 @@ MooseX::Singleton::Test->clear;
 is($mst->distinct_keys, 0, "Package->clear works");
 is($mst2->distinct_keys, 0, "Package->clear works");
 is(MooseX::Singleton::Test->distinct_keys, 0, "Package->clear works");
+
+{
+    my $addr;
+
+    {
+        $addr = refaddr( MooseX::Singleton::Test->instance );
+    }
+
+    is( $addr, refaddr( MooseX::Singleton::Test->instance ),
+        'singleton is not randomly destroyed' );
+}
 
