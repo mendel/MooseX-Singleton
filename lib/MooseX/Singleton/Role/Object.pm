@@ -40,7 +40,7 @@ __END__
 
 =head1 NAME
 
-MooseX::Singleton::Object - Object class role for MooseX::Singleton
+MooseX::Singleton::Role::Object - Object class role for MooseX::Singleton
 
 =head1 DESCRIPTION
 
