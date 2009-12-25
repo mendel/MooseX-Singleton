@@ -1,7 +1,7 @@
 package MooseX::Singleton::Role::Meta::Method::Constructor;
 use Moose::Role;
 
-our $VERSION = '0.21';
+our $VERSION = '0.22';
 $VERSION = eval $VERSION;
 
 override _initialize_body => sub {
