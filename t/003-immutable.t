@@ -5,12 +5,8 @@ use Scalar::Util qw( refaddr );
 use Test::More;
 
 BEGIN {
-    unless ( eval 'use Test::Warn; 1' ) {
-        plan skip_all => 'These tests require Test::Warn';
-    }
-    else {
-        plan tests => 18;
-    }
+    eval 'use Test::Warn';
+    plan skip_all => 'These tests require Test::Warn' if $@;
 }
 
 {
@@ -95,3 +91,5 @@ is( MooseX::Singleton::Test->distinct_keys, 0, "Package->clear works" );
         'singleton is not randomly destroyed'
     );
 }
+
+done_testing;

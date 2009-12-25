@@ -1,7 +1,7 @@
 use strict;
 use warnings;
 
-use Test::More 'no_plan';
+use Test::More;
 
 {
     package MySingleton;
@@ -36,3 +36,5 @@ is(
     MySingleton->attrib, 'bar',
     'BUILDARGS changed value of attrib when instance was explicitly instantiated'
 );
+
+done_testing;

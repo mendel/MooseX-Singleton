@@ -1,6 +1,6 @@
 use strict;
 use warnings;
-use Test::More tests => 11;
+use Test::More;
 use Test::Exception;
 
 my $i = 0;
@@ -64,3 +64,5 @@ for my $pkg (new_singleton_pkg) {
     ok( Single->new, 'can call ->new without any args' );
     ok( Single->instance, 'can call ->instance without any args' );
 }
+
+done_testing;

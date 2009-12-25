@@ -1,6 +1,6 @@
 use strict;
 use warnings;
-use Test::More tests => 17;
+use Test::More;
 
 BEGIN {
     package MooseX::Singleton::Test;
@@ -72,3 +72,5 @@ is( MooseX::Singleton::Test->distinct_keys, 0, "Package->clear works" );
 MooseX::Singleton::Test->_clear_instance;
 $mst = $mst2 = undef;
 is( MooseX::Singleton::Test->instance->distinct_keys, 1, "back to the default" );
+
+done_testing;
