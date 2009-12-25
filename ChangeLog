@@ -1,9 +1,16 @@
 Revision history for Perl extension MooseX-Singleton
 
+0.22 2009-12-25
+    - The ->initialize method was both broken and undocumented. RT
+      #51260. (Dave Rolsky)
+    - Updated docs to encourage use of ->instance and ->initialize, and
+      discourage calling ->new directly. Doing so may be deprecated in a
+      future release. (Dave Rolsky)
+	
 0.21 2009-09-12
     - Various modules in this class were trying to load the old pre-0.20
       classes, which have all been renamed. Tests passed if you had 0.19 or
-      earlier installed, but failed for fresh installations.  (Dave Rolsky)
+      earlier installed, but failed for fresh installations. (Dave Rolsky)
 
 0.20 2009-09-11
     - Converted this extension to use roles rather than metaclass
