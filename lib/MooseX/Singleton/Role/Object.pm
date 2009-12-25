@@ -1,5 +1,9 @@
 package MooseX::Singleton::Role::Object;
 use Moose::Role;
+use Carp qw( carp );
+
+our $VERSION = '0.21';
+$VERSION = eval $VERSION;
 
 sub instance { shift->new }
 

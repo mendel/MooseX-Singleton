@@ -3,6 +3,9 @@ use Moose::Role;
 use MooseX::Singleton::Role::Meta::Instance;
 use MooseX::Singleton::Role::Meta::Method::Constructor;
 
+our $VERSION = '0.21';
+$VERSION = eval $VERSION;
+
 sub existing_singleton {
     my ($class) = @_;
     my $pkg = $class->name;

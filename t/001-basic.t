@@ -71,4 +71,4 @@ is( MooseX::Singleton::Test->distinct_keys, 0, "Package->clear works" );
 
 MooseX::Singleton::Test->_clear_instance;
 $mst = $mst2 = undef;
-is( MooseX::Singleton::Test->new->distinct_keys, 1, "back to the default" );
+is( MooseX::Singleton::Test->instance->distinct_keys, 1, "back to the default" );
