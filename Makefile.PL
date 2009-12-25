@@ -13,4 +13,6 @@ build_requires 'Test::Exception';
 
 license 'Perl';
 
+extra_tests();
+
 WriteAll();
