@@ -1,7 +1,9 @@
 use strict;
 use warnings;
 
-use Test::Spelling;
+use Test::More;
+eval 'use Test::Spelling;';
+plan skip_all => "Test::Spelling required for testing POD spelling" if $@;
 
 my @stopwords;
 for (<DATA>) {
@@ -12,7 +14,7 @@ for (<DATA>) {
 
 add_stopwords(@stopwords);
 set_spell_cmd('aspell list -l en');
-all_pod_files_spelling_ok;
+all_pod_files_spelling_ok();
 
 __DATA__
 metaclass

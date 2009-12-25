@@ -8,7 +8,7 @@ all_from 'lib/MooseX/Singleton.pm';
 requires 'Moose' => '0.82';
 
 build_requires 'Scalar::Util';
-build_requires 'Test::More';
+build_requires 'Test::More' => '0.88';
 build_requires 'Test::Exception';
 
 license 'Perl';
