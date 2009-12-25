@@ -97,6 +97,12 @@ the singleton object with the given arguments.
 This clears the existing singleton instance for the class. Obviously, this is
 meant for use only inside the class itself.
 
+=head2 Singleton->new
+
+This method currently works like a hybrid of C<initialize> and
+C<instance>. However, calling C<new> directly will probably be deprecated in a
+future release. Instead, call C<initialize> or C<instance> as appropriate.
+
 =head1 BUGS
 
 Please report any bugs or feature requests to
