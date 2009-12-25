@@ -82,3 +82,19 @@ override _expected_method_class => sub {
 no Moose;
 
 1;
+
+__END__
+
+=pod
+
+=head1 NAME
+
+MooseX::Singleton::Role::Meta::Method::Constructor - Constructor method role for MooseX::Singleton
+
+=head1 DESCRIPTION
+
+This role overrides the generated object C<new> method so that it returns the
+singleton if it already exists.
+
+=cut
+
