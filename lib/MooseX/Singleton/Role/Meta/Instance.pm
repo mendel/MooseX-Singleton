@@ -53,7 +53,7 @@ override inline_slot_access => sub  {
     sprintf "%s->meta->instance_metaclass->get_singleton_instance(%s)->{%s}", $instance, $instance, $slot_name;
 };
 
-no Moose;
+no Moose::Role;
 
 1;
 

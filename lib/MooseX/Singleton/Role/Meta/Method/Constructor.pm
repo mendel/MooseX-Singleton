@@ -79,7 +79,7 @@ override _expected_method_class => sub {
     return $super_value;
 };
 
-no Moose;
+no Moose::Role;
 
 1;
 

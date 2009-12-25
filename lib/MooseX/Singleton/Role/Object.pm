@@ -30,7 +30,7 @@ sub _clear_instance {
   $class->meta->clear_singleton;
 }
 
-no Moose;
+no Moose::Role;
 
 1;
 

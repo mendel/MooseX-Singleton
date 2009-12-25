@@ -36,7 +36,7 @@ override _construct_instance => sub {
     return ${"$pkg\::singleton"} = super;
 };
 
-no Moose;
+no Moose::Role;
 
 1;
 
