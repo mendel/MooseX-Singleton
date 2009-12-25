@@ -1,6 +1,6 @@
 use strict;
 use warnings;
-use Test::More tests => 9;
+use Test::More tests => 11;
 use Test::Exception;
 
 my $i = 0;
@@ -51,3 +51,16 @@ for my $pkg (new_singleton_pkg) {
         "...but ->initialize() is still an error";
 }
 
+{
+    package Single;
+
+    use MooseX::Singleton;
+
+    has foo => ( is => 'ro' );
+}
+
+{
+    Single->initialize( foo => 2 );
+    ok( Single->new, 'can call ->new without any args' );
+    ok( Single->instance, 'can call ->instance without any args' );
+}
