@@ -1,4 +1,3 @@
-#!/usr/bin/env perl
 package MooseX::Singleton::Role::Meta::Class;
 use Moose::Role;
 use MooseX::Singleton::Role::Meta::Instance;

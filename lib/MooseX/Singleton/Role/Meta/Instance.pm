@@ -1,4 +1,3 @@
-#!/usr/bin/env perl
 package MooseX::Singleton::Role::Meta::Instance;
 use Moose::Role;
 use Scalar::Util 'weaken';

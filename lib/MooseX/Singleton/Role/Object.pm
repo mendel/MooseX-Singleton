@@ -1,4 +1,3 @@
-#!/usr/bin/env perl
 package MooseX::Singleton::Role::Object;
 use Moose::Role;
 
