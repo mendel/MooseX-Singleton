@@ -10,7 +10,7 @@ sub existing_singleton {
     no strict 'refs';
 
     # create exactly one instance
-    if (defined ${"$pkg\::singleton"}) {
+    if ( defined ${"$pkg\::singleton"} ) {
         return ${"$pkg\::singleton"};
     }
 

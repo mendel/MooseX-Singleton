@@ -3,6 +3,7 @@ use Moose::Role;
 
 override _initialize_body => sub {
     my $self = shift;
+
     # TODO:
     # the %options should also include a both
     # a call 'initializer' and call 'SUPER::'
@@ -13,14 +14,18 @@ override _initialize_body => sub {
     my $source = 'sub {';
     $source .= "\n" . 'my $class = shift;';
 
-    $source .= "\n" . 'my $existing = do { no strict "refs"; no warnings "once"; \${"$class\::singleton"}; };';
+    $source .= "\n"
+        . 'my $existing = do { no strict "refs"; no warnings "once"; \${"$class\::singleton"}; };';
     $source .= "\n" . 'return ${$existing} if ${$existing};';
 
     $source .= "\n" . 'return $class->Moose::Object::new(@_)';
-    $source .= "\n" . '    if $class ne \'' . $self->associated_metaclass->name . '\';';
+    $source
+        .= "\n"
+        . '    if $class ne \''
+        . $self->associated_metaclass->name . '\';';
 
-    $source .= $self->_generate_params('$params', '$class');
-    $source .= $self->_generate_instance('$instance', '$class');
+    $source .= $self->_generate_params( '$params', '$class' );
+    $source .= $self->_generate_instance( '$instance', '$class' );
     $source .= $self->_generate_slot_initializers;
 
     $source .= ";\n" . $self->_generate_triggers();
@@ -32,25 +37,27 @@ override _initialize_body => sub {
 
     my $attrs = $self->_attributes;
 
-    my @type_constraints = map {
-        $_->can('type_constraint') ? $_->type_constraint : undef
-    } @$attrs;
+    my @type_constraints
+        = map { $_->can('type_constraint') ? $_->type_constraint : undef }
+        @$attrs;
 
-    my @type_constraint_bodies = map {
-        defined $_ ? $_->_compiled_type_constraint : undef;
-    } @type_constraints;
+    my @type_constraint_bodies
+        = map { defined $_ ? $_->_compiled_type_constraint : undef; }
+        @type_constraints;
 
     my ( $code, $e ) = $self->_compile_code(
-        code => $source,
+        code        => $source,
         environment => {
-            '$meta'  => \$self,
-            '$attrs' => \$attrs,
-            '@type_constraints' => \@type_constraints,
+            '$meta'                   => \$self,
+            '$attrs'                  => \$attrs,
+            '@type_constraints'       => \@type_constraints,
             '@type_constraint_bodies' => \@type_constraint_bodies,
         },
     );
 
-    $self->throw_error("Could not eval the constructor :\n\n$source\n\nbecause :\n\n$e", error => $e, data => $source )
+    $self->throw_error(
+        "Could not eval the constructor :\n\n$source\n\nbecause :\n\n$e",
+        error => $e, data => $source )
         if $e;
 
     $self->{'body'} = $code;

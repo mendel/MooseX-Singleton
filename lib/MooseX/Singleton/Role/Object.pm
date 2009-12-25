@@ -4,30 +4,30 @@ use Moose::Role;
 sub instance { shift->new }
 
 sub initialize {
-  my ($class, @args) = @_;
+    my ( $class, @args ) = @_;
 
-  my $existing = $class->meta->existing_singleton;
-  confess "Singleton is already initialized" if $existing;
+    my $existing = $class->meta->existing_singleton;
+    confess "Singleton is already initialized" if $existing;
 
-  return $class->new(@args);
+    return $class->new(@args);
 }
 
 override new => sub {
-  my ($class, @args) = @_;
+    my ( $class, @args ) = @_;
 
-  my $existing = $class->meta->existing_singleton;
-  confess "Singleton is already initialized" if $existing and @args;
+    my $existing = $class->meta->existing_singleton;
+    confess "Singleton is already initialized" if $existing and @args;
 
-  # Otherwise BUILD will be called repeatedly on the existing instance.
-  # -- rjbs, 2008-02-03
-  return $existing if $existing and ! @args;
+    # Otherwise BUILD will be called repeatedly on the existing instance.
+    # -- rjbs, 2008-02-03
+    return $existing if $existing and !@args;
 
-  return super();
+    return super();
 };
 
 sub _clear_instance {
-  my ($class) = @_;
-  $class->meta->clear_singleton;
+    my ($class) = @_;
+    $class->meta->clear_singleton;
 }
 
 no Moose::Role;

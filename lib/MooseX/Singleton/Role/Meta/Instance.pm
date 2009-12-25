@@ -3,7 +3,7 @@ use Moose::Role;
 use Scalar::Util 'weaken';
 
 sub get_singleton_instance {
-    my ($self, $instance) = @_;
+    my ( $self, $instance ) = @_;
 
     return $instance if blessed $instance;
 
@@ -18,39 +18,42 @@ sub get_singleton_instance {
     return $instance->meta->name->new;
 }
 
-override clone_instance => sub  {
-    my ($self, $instance) = @_;
+override clone_instance => sub {
+    my ( $self, $instance ) = @_;
     $self->get_singleton_instance($instance);
 };
 
-override get_slot_value => sub  {
-    my ($self, $instance, $slot_name) = @_;
-    $self->is_slot_initialized($instance, $slot_name) ? $self->get_singleton_instance($instance)->{$slot_name} : undef;
+override get_slot_value => sub {
+    my ( $self, $instance, $slot_name ) = @_;
+    $self->is_slot_initialized( $instance, $slot_name )
+        ? $self->get_singleton_instance($instance)->{$slot_name}
+        : undef;
 };
 
-override set_slot_value => sub  {
-    my ($self, $instance, $slot_name, $value) = @_;
+override set_slot_value => sub {
+    my ( $self, $instance, $slot_name, $value ) = @_;
     $self->get_singleton_instance($instance)->{$slot_name} = $value;
 };
 
-override deinitialize_slot => sub  {
+override deinitialize_slot => sub {
     my ( $self, $instance, $slot_name ) = @_;
     delete $self->get_singleton_instance($instance)->{$slot_name};
 };
 
-override is_slot_initialized => sub  {
-    my ($self, $instance, $slot_name, $value) = @_;
+override is_slot_initialized => sub {
+    my ( $self, $instance, $slot_name, $value ) = @_;
     exists $self->get_singleton_instance($instance)->{$slot_name} ? 1 : 0;
 };
 
-override weaken_slot_value => sub  {
-    my ($self, $instance, $slot_name) = @_;
+override weaken_slot_value => sub {
+    my ( $self, $instance, $slot_name ) = @_;
     weaken $self->get_singleton_instance($instance)->{$slot_name};
 };
 
-override inline_slot_access => sub  {
-    my ($self, $instance, $slot_name) = @_;
-    sprintf "%s->meta->instance_metaclass->get_singleton_instance(%s)->{%s}", $instance, $instance, $slot_name;
+override inline_slot_access => sub {
+    my ( $self, $instance, $slot_name ) = @_;
+    sprintf "%s->meta->instance_metaclass->get_singleton_instance(%s)->{%s}",
+        $instance, $instance, $slot_name;
 };
 
 no Moose::Role;
