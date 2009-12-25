@@ -18,7 +18,7 @@ plan 'no_plan';
     use MooseX::Singleton;
     use MooseX::StrictConstructor;
 
-    has 'attrib' => is => 'rw';
+    has 'attrib' => ( is => 'rw' );
 }
 
 throws_ok {
