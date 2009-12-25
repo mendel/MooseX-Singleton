@@ -10,7 +10,7 @@ sub initialize {
   my $existing = $class->meta->existing_singleton;
   confess "Singleton is already initialized" if $existing;
 
-  return $class->SUPER::new(@args);
+  return $class->new(@args);
 }
 
 override new => sub {
