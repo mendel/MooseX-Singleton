@@ -72,38 +72,37 @@ C<MooseX::Singleton> lets you easily upgrade (or downgrade, as it were) your
 L<Moose> class to a singleton.
 
 All you should need to do to transform your class is to change C<use Moose> to
-C<use MooseX::Singleton>. This module uses a new class metaclass and instance
-metaclass, so if you're doing metamagic you may not be able to use this.
+C<use MooseX::Singleton>. This module uses metaclass roles to do its magic, so
+it should cooperate with most other C<MooseX> modules.
 
-C<MooseX::Singleton> gives your class an C<instance> method that can be used to
-get a handle on the singleton. It's actually just an alias for C<new>.
+=head1 METHODS
 
-Alternatively, C<< YourPackage->method >> should just work. This includes
-accessors.
+A singleton class will have the following additional methods:
 
-If you need to reset your class's singleton object for some reason (e.g.
-tests), you can call C<< YourPackage->_clear_instance >>.
+=head2 Singleton->instance
 
-=head1 TODO
+This returns the singleton instance for the given package. This method does
+I<not> accept any arguments. If the instance does not yet exist, it is created
+with its defaults values. This means that if your singleton requires
+arguments, calling C<instance> will die if the object has not already been
+initialized.
 
-=over
+=head2 Singleton->initialize(%args)
 
-=item Always more tests and doc
+This method can be called I<only once per class>. It explicitly initializes
+the singleton object with the given arguments.
 
-=item Fix speed boost
+=head2 Singleton->_clear_instance
 
-C<instance> invokes C<new> every time C<< Package->method >> is called, which
-incurs a nontrivial runtime cost. I've implemented a short-circuit for this
-case, which does eliminate nearly all of the runtime cost. However, it's ugly
-and should be fixed in a more elegant way.
-
-=back
+This clears the existing singleton instance for the class. Obviously, this is
+meant for use only inside the class itself.
 
 =head1 BUGS
 
-All complex software has bugs lurking in it, and this module is no 
-exception. If you find a bug please either email me, or add the bug
-to cpan-RT.
+Please report any bugs or feature requests to
+C<bug-moosex-singleton@rt.cpan.org>, or through the web interface at
+L<http://rt.cpan.org>. We will be notified, and then you'll automatically be
+notified of progress on your bug as we make changes.
 
 =head1 AUTHORS
 
@@ -121,7 +120,7 @@ Ricardo SIGNES E<lt>rjbs@cpan.orgE<gt>
 
 =head1 COPYRIGHT AND LICENSE
 
-Copyright 2007, 2008 Infinity Interactive
+Copyright 2007-2009 Infinity Interactive
 
 This program is free software; you can redistribute it and/or modify it under
 the same terms as Perl itself.
