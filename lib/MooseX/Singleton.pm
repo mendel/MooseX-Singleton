@@ -19,13 +19,15 @@ sub init_meta {
 
     my $caller = $p{for_class};
 
-    Moose::Util::MetaRole::apply_metaclass_roles(
-        for_class       => $caller,
-        metaclass_roles => ['MooseX::Singleton::Role::Meta::Class'],
-        instance_metaclass_roles =>
-            ['MooseX::Singleton::Role::Meta::Instance'],
-        constructor_class_roles =>
-            ['MooseX::Singleton::Role::Meta::Method::Constructor'],
+    Moose::Util::MetaRole::apply_metaroles(
+        for             => $caller,
+        class_metaroles => {
+            class => ['MooseX::Singleton::Role::Meta::Class'],
+            instance =>
+                ['MooseX::Singleton::Role::Meta::Instance'],
+            constructor =>
+                ['MooseX::Singleton::Role::Meta::Method::Constructor'],
+        },
     );
 
     Moose::Util::MetaRole::apply_base_class_roles(
