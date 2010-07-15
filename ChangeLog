@@ -6,7 +6,7 @@ Revision history for Perl extension MooseX-Singleton
     - Updated docs to encourage use of ->instance and ->initialize, and
       discourage calling ->new directly. Doing so may be deprecated in a
       future release. (Dave Rolsky)
-	
+
 0.21 2009-09-12
     - Various modules in this class were trying to load the old pre-0.20
       classes, which have all been renamed. Tests passed if you had 0.19 or
@@ -21,8 +21,8 @@ Revision history for Perl extension MooseX-Singleton
     - Remove ambiguity about copyright holder (Sartak)
 
 0.18 2009-06-21
-    - Changes to work Moose 0.82 (Dave Rolsky)	
-	
+    - Changes to work Moose 0.82 (Dave Rolsky)
+
 0.17 2009-04-24
     - Add ClassName->_clear_instance. (hdp)
 
@@ -30,7 +30,7 @@ Revision history for Perl extension MooseX-Singleton
     - Changes to keep constructor inlining working with latest Moose &
       Class::MOP. This module will still work with any Moose from 0.74
       on up.
-	
+
 0.15 2009-04-07
     - Fixed to work with Moose 0.73_01
 
@@ -42,19 +42,19 @@ Revision history for Perl extension MooseX-Singleton
 0.14 2009-01-22
     - Converted to use new method generation helpers in the most
       recent Moose (0.65) and Class::MOP (Dave Rolsky)
-	
+
 0.13 2008-12-08
     - Fixed to work with Moose 0.63
 
 0.12 2008-09-20
     - Fixed to work with Moose 0.58
-	
+
 0.11 2008-09-05
     - Fixed to work with Moose 0.57. Fixes RT #39013. Reported by Jon Swartz (Dave Rolsky)
-	
+
 0.10 2008-09-01
     - No code changes, just a stable release to go with Moose 0.56 release (Dave Rolsky)
-	
+
 0.09_02 2008-08-22
     - bumped the Moose dependency to 0.55_01 (Dave Rolsky)
 
