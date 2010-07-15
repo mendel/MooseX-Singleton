@@ -1,5 +1,9 @@
 Revision history for Perl extension MooseX-Singleton
 
+0.23 2010-07-15
+    - Use modern Moose APIs to avoid warnings from the next Moose. (Dave
+      Rolsky)
+
 0.22 2009-12-25
     - The ->initialize method was both broken and undocumented. RT
       #51260. (Dave Rolsky)
