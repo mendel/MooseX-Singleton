@@ -4,10 +4,10 @@ use warnings;
 use Scalar::Util qw( refaddr );
 use Test::More;
 
-BEGIN {
-    eval 'use Test::Warn';
-    plan skip_all => 'These tests require Test::Warn' if $@;
-}
+use Test::Requires {
+   'Test::Warn' => 0.01, # skip all if not installed
+};
+
 
 {
     package MooseX::Singleton::Test;
