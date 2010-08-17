@@ -1,6 +1,6 @@
 package MooseX::Singleton;
 
-use Moose 0.94 ();
+use Moose 1.10 ();
 use Moose::Exporter;
 use MooseX::Singleton::Role::Object;
 use MooseX::Singleton::Role::Meta::Class;

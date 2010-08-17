@@ -5,7 +5,7 @@ use inc::Module::Install;
 name 'MooseX-Singleton';
 all_from 'lib/MooseX/Singleton.pm';
 
-requires 'Moose' => '0.94';
+requires 'Moose' => '1.10';
 
 build_requires 'Scalar::Util';
 build_requires 'Test::More' => '0.88';
