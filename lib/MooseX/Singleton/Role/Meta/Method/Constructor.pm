@@ -48,11 +48,14 @@ override _initialize_body => sub {
         = map { defined $_ ? $_->_compiled_type_constraint : undef; }
         @type_constraints;
 
+    my $defaults = [map { $_->default } @$attrs];
+
     my ( $code, $e ) = $self->_compile_code(
         code        => $source,
         environment => {
             '$meta'                   => \$self,
             '$attrs'                  => \$attrs,
+            '$defaults'               => \$defaults,
             '@type_constraints'       => \@type_constraints,
             '@type_constraint_bodies' => \@type_constraint_bodies,
         },
