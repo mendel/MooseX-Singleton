@@ -2,7 +2,7 @@ package MooseX::Singleton::Role::Meta::Instance;
 use Moose::Role;
 use Scalar::Util 'weaken';
 
-our $VERSION = '0.24';
+our $VERSION = '0.25';
 $VERSION = eval $VERSION;
 
 sub get_singleton_instance {
