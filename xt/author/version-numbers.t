@@ -3,13 +3,10 @@ use warnings;
 
 use Test::More;
 
-eval <<'EOF';
-use File::Find::Rule;
-use Module::Info;
-EOF
-
-plan skip_all => 'File::Find::Rule and Module::Info required for testing version numbers' if $@;
-
+use Test::Requires {
+    'File::Find::Rule' => '0.01', # skip all if not installed
+    'Module::Info' => '0.01',
+};
 
 my %versions;
 for my $pm_file ( File::Find::Rule->file->name( qr/\.pm$/ )->in('lib' ) ) {
